@@ -1,0 +1,73 @@
+body {
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+.background_for_signup {
+  background-image: url(https://images.pexels.com/photos/1055379/pexels-photo-1055379.jpeg?cs=srgb&dl=pexels-daniel-frese-1055379.jpg&fm=jpg);
+  background-size: cover;
+}
+
+
+.signup {
+  width: 300px;
+  margin: 100px auto;
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+.signup h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup form p {
+  margin-bottom: 10px;
+}
+
+.signup form input[type="text"],
+.signup form input[type="email"],
+.signup form input[type="password"] {
+  height: 15px;
+  width: 180px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  font-size: 14px;
+}
+
+.signup form input[type="text"]:focus,
+.signup form input[type="email"]:focus,
+.signup form input[type="password"]:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+
+.signup form button[type="submit"] {
+  background-color: #4285f4;
+  color: white;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.signup form button[type="submit"]:hover {
+  background-color: #2e78e7;
+}
+
+.errors {
+  color: red;
+  margin-top: 10px;
+}

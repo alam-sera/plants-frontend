@@ -34,6 +34,9 @@ export function Header() {
             <li class="planthealth">
               <Link to="planthealth">Plant Health</Link>
             </li>
+            <li class="plantall">
+              <Link to="plantall">Plant All</Link>
+            </li>
           </ul>
         </nav>
       </div>

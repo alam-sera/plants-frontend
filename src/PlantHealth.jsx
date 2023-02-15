@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Plants } from "./Plants";
+import "./PlantHealth.css";
 
 export function PlantHealth() {
   const [result, setResult] = useState(null);
@@ -33,25 +33,19 @@ export function PlantHealth() {
         images: base64files,
         modifiers: ["crops_fast", "similar_images"],
         plant_language: "en",
-        plant_details: [
-          "common_names",
-          "url",
-          "name_authority",
-          "wiki_description",
-          "taxonomy",
-          "synonyms",
-        ],
+        disease_details: ["description", "treatment"],
       };
 
-      // axios.defaults.headers.common["Authorization"] =
-      //   "Bearer ";
-      delete axios.defaults.headers.common["Authorization"];
-      localStorage.removeItem("jwt");
-
-      axios
-        // .post("https://api.plant.id/v2/identify/health_assessment", data)
-        .then((res) => {
-          setResult(res.data);
+      axios({
+        method: "post",
+        url: "https://api.plant.id/v2/health_assessment",
+        data: data,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          setResult(response.data);
         })
         .catch((error) => {
           console.error("Error: ", error);
@@ -64,11 +58,51 @@ export function PlantHealth() {
   }, [files]);
 
   return (
-    <div>
-      <h1>Plant Identification</h1>
+    <div className="container">
+      <h1>Plant Assessment</h1>
       <p>Upload a picture to get started</p>
       <input type="file" multiple onChange={handleFileUpload} />
-      {result ? <pre>{JSON.stringify(result, null, 2)}</pre> : <p></p>}
+      {result ? (
+        <div className="result">
+          <img src={result.images[0].url} alt="Plant" />
+          <h4>
+            Plant Healthy Probability:{" "}
+            {result.health_assessment.is_healthy_probability}
+          </h4>
+          <h4>Disease Name: {result.health_assessment.diseases[0].name}</h4>
+          <h4>
+            Disease Probability:{" "}
+            {result.health_assessment.diseases[0].probability}
+          </h4>
+          <img
+            src={result.health_assessment.diseases[0].similar_images[0].url}
+            alt="Disease"
+          />
+          <h4>
+            Disease Description:{" "}
+            {result.health_assessment.diseases[0].disease_details.description}
+          </h4>
+          <h3>Treatment</h3>
+          <div className="treatment">
+            <h4>
+              Biological:{" "}
+              {
+                result.health_assessment.diseases[0].disease_details.treatment
+                  .biological
+              }
+            </h4>
+            <h4>
+              Chemical:{" "}
+              {
+                result.health_assessment.diseases[0].disease_details.treatment
+                  .chemical
+              }
+            </h4>
+          </div>
+        </div>
+      ) : (
+        <p></p>
+      )}
     </div>
   );
 }

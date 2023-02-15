@@ -2,10 +2,11 @@ import { PlantsIndex } from "./PlantsIndex";
 import { PlantsNew } from "./PlantsNew";
 import { PlantId } from "./PlantId";
 import { PlantHealth } from "./PlantHealth";
+import { PlantAll } from "./PlantAll";
 import { Scheduler } from "./Home/Scheduler";
 import { Home } from "./Home/Home";
-import { Login } from "./Login";
-import { Signup } from "./Signup";
+import { Login } from "./Login/Login";
+import { Signup } from "./Signup/Signup";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -32,6 +33,7 @@ export function Content() {
     <div>
       <Routes>
         <Route path="/home" element={<Home />} />
+        <Route path="plantall" element={<PlantAll />} />
         <Route path="/plantid" element={<PlantId />} />
         <Route path="/planthealth" element={<PlantHealth />} />
         <Route path="/plants" element={<PlantsIndex plants={plants} />} />

@@ -1,0 +1,106 @@
+body {
+  background-color: #f2f2f2;
+  font-family: "Roboto", sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+}
+
+.error-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: center;
+  color: red;
+}
+
+.login-form {
+  margin: 0 auto;
+  max-width: 300px;
+  max-height: 660px;
+  padding: 20px 40px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc; 
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #4285f4;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #357ae8;
+}
+
+.sign-out-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #f44336;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.sign-out-button:hover {
+  background-color: #d32f2f;
+}
+
+.user-info {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+}
+
+.user-name {
+  font-size: 22px;
+  color: #333;
+  margin-top: 20px;
+}
+
+.logo-image {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Plants } from "./Plants";
+import "./PlantId.css";
 
 export function PlantId() {
   const [result, setResult] = useState(null);
@@ -43,13 +43,8 @@ export function PlantId() {
         ],
       };
 
-      // axios.defaults.headers.common["Authorization"] =
-      //   "Bearer ";
-      delete axios.defaults.headers.common["Authorization"];
-      localStorage.removeItem("jwt");
-
       axios
-        // .post("https://api.plant.id/v2/identify", data)
+        .post("https://api.plant.id/v2/identify", data)
         .then((res) => {
           setResult(res.data);
         })
@@ -68,8 +63,37 @@ export function PlantId() {
       <h1>Plant Identification</h1>
       <p>Upload a picture to get started</p>
       <input type="file" multiple onChange={handleFileUpload} />
-      {result ? <pre>{JSON.stringify(result, null, 2)}</pre> : <p></p>}
-      <Plants />
+      {result && (
+        <div className="plant-container">
+          <h2 className="plant-name">
+            Suggested Plant: {result.suggestions[0].plant_name}
+          </h2>
+          <img className="plant-image" src={result.images[0].url} alt="Plant" />
+          <p className="plant-description">
+            {result.suggestions[0].plant_details.wiki_description.value}
+          </p>
+          <ul className="taxonomy">
+            <li className="taxonomy-class">
+              Class: {result.suggestions[0].plant_details.taxonomy.class}
+            </li>
+            <li className="taxonomy-family">
+              Family: {result.suggestions[0].plant_details.taxonomy.family}
+            </li>
+          </ul>
+          <h3 className="similar-images-title">Similar Images:</h3>
+          <ul className="similar-images-list">
+            {result.suggestions[0].similar_images.map((image) => (
+              <li className="similar-image-item" key={image.id}>
+                <img
+                  className="similar-image"
+                  src={image.url}
+                  alt="Similar Plant"
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
